@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A76341ED255168570082AD66 /* TasksListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76341EC255168570082AD66 /* TasksListTableViewCell.swift */; };
 		A77724902550B46200B04798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777248F2550B46200B04798 /* AppDelegate.swift */; };
 		A77724922550B46200B04798 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77724912550B46200B04798 /* SceneDelegate.swift */; };
 		A77724942550B46200B04798 /* ListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77724932550B46200B04798 /* ListsViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A76341EC255168570082AD66 /* TasksListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListTableViewCell.swift; sourceTree = "<group>"; };
 		A777248C2550B46200B04798 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A777248F2550B46200B04798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A77724912550B46200B04798 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 			children = (
 				A79089DA2550B68400B6C212 /* Main.storyboard */,
 				A77724AE2550B57600B04798 /* TaskDetailsViews.swift */,
+				A76341EC255168570082AD66 /* TasksListTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A76341ED255168570082AD66 /* TasksListTableViewCell.swift in Sources */,
 				A77724A82550B4BD00B04798 /* TasksModel.swift in Sources */,
 				A77724942550B46200B04798 /* ListsViewController.swift in Sources */,
 				A77724AB2550B4CC00B04798 /* TasksManager.swift in Sources */,

@@ -9,10 +9,13 @@ import UIKit
 
 class TasksDetailsViewController: UIViewController {
 
+    var isEditingMode = false
     var TasksManagerList : TaskManager!
-
     let AddTaskViewUI = AddTaskView()
+    var selectedTask: Tasks!
     var task : Tasks!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -23,6 +26,8 @@ class TasksDetailsViewController: UIViewController {
     override func loadView() {
         view = AddTaskViewUI
        }
+    
+
 
 }
 extension TasksDetailsViewController :TasksDetaileDelegate{
@@ -30,16 +35,26 @@ extension TasksDetailsViewController :TasksDetaileDelegate{
 
     
     func GetDate(date: Date) {
-        print("From the view controller")
         print(date)
         
     }
     
     func GetNewTask(title: String, date: Date, desc: String) {
-     //   print("title \(title) date \(date) desc \(desc)")
-        performSegue(withIdentifier: "showTasksList", sender: nil)
-        task = TasksManagerList.addNewTask(title: title, date: date, desc: desc)
-    
+        
+        switch isEditingMode {
+        case false:
+            
+            performSegue(withIdentifier: "showTasksList", sender: nil)
+            task = TasksManagerList.addNewTask(title: title, completed: false, date: date, desc: desc)
+            TasksManagerList.save()
+            
+        case true:
+            
+            selectedTask.title = AddTaskViewUI.TitleField.text!
+            performSegue(withIdentifier: "showTasksList", sender: nil)
+
+        }
+      
 
         
     }
@@ -49,7 +64,6 @@ extension TasksDetailsViewController :TasksDetaileDelegate{
         case "showTasksList":
             let listTableViewController = segue.destination as! ListsViewController
             listTableViewController.TasksManagerList = TasksManagerList
-//            delegate = listTableViewController
             for i in TasksManagerList.tasksList {
                             print("\n\n -****************--- \n \(i)\n\n")
                         }

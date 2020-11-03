@@ -102,14 +102,58 @@
                                 <rect key="frame" x="0.0" y="271" width="414" height="571"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reuseIdentifier" id="ihz-0i-CPc">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TasksListTableViewCell" rowHeight="100" id="ihz-0i-CPc" customClass="TasksListTableViewCell" customModule="ToDoApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ihz-0i-CPc" id="pH4-sW-5uu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwZ-IG-ddR">
+                                                    <rect key="frame" x="31" y="23" width="200" height="23"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="eIZ-Py-i7l"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Vx-DX-NQ1">
+                                                    <rect key="frame" x="31" y="62" width="300" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="k2v-uh-phP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-U5-tIn">
+                                                    <rect key="frame" x="334" y="35" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="5Xk-iV-FvS"/>
+                                                        <constraint firstAttribute="width" constant="40" id="E2c-Jg-JHH"/>
+                                                    </constraints>
+                                                    <state key="normal" image="unchecked"/>
+                                                    <connections>
+                                                        <action selector="CompleteButtonClicked:" destination="ihz-0i-CPc" eventType="touchUpInside" id="38N-Q7-Dci"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uwZ-IG-ddR" firstAttribute="top" secondItem="pH4-sW-5uu" secondAttribute="topMargin" constant="12" id="1jb-Vm-Jdf"/>
+                                                <constraint firstItem="8Vx-DX-NQ1" firstAttribute="leading" secondItem="pH4-sW-5uu" secondAttribute="leadingMargin" constant="11" id="Ncv-W7-Cbx"/>
+                                                <constraint firstItem="8Vx-DX-NQ1" firstAttribute="top" secondItem="uwZ-IG-ddR" secondAttribute="bottom" constant="16" id="P6c-r3-GqH"/>
+                                                <constraint firstItem="7dg-U5-tIn" firstAttribute="trailing" secondItem="pH4-sW-5uu" secondAttribute="trailingMargin" constant="-20" id="drE-qZ-jKy"/>
+                                                <constraint firstItem="8Vx-DX-NQ1" firstAttribute="top" secondItem="uwZ-IG-ddR" secondAttribute="bottom" constant="16" id="gaX-M6-ZDT"/>
+                                                <constraint firstItem="uwZ-IG-ddR" firstAttribute="leading" secondItem="pH4-sW-5uu" secondAttribute="leadingMargin" constant="11" id="pKw-9D-Ds2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8Vx-DX-NQ1" secondAttribute="bottom" constant="9" id="sS0-w4-5Ei"/>
+                                                <constraint firstItem="7dg-U5-tIn" firstAttribute="top" secondItem="pH4-sW-5uu" secondAttribute="topMargin" constant="24" id="uK0-mM-bt3"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="completeButton" destination="7dg-U5-tIn" id="0Rd-oO-xSz"/>
+                                            <outlet property="dueDateLabel" destination="8Vx-DX-NQ1" id="z3D-yx-LpM"/>
+                                            <outlet property="taskTitle" destination="uwZ-IG-ddR" id="JLT-wB-7H8"/>
                                             <segue destination="lE4-7J-1tq" kind="show" identifier="showDetail" id="7HZ-rs-MhE"/>
                                         </connections>
                                     </tableViewCell>
@@ -152,6 +196,7 @@
         <segue reference="7HZ-rs-MhE"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="unchecked" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
