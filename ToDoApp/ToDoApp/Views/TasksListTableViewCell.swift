@@ -7,8 +7,19 @@
 
 import UIKit
 
+protocol TasksCellDelegate {
+    func updateTask(index: Int)
+}
 class TasksListTableViewCell: UITableViewCell {
 
+    @IBOutlet var taskTitle: UILabel!
+    @IBOutlet var dueDateLabel: UILabel!
+    @IBOutlet var completeButton: UIButton!
+    
+    var cellDelegate: TasksCellDelegate!
+    
+    var index: Int?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,4 +31,8 @@ class TasksListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func CompleteButtonClicked(_ sender: Any) {
+     cellDelegate.updateTask(index:index!)
+    }
 }
+
