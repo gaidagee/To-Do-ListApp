@@ -63,6 +63,7 @@ class TaskManager {
             print("Saved lists!")
         } catch {
             print("Failed to save lists. \(error)")
+            self.reportError(title: "Error", message: "Failed to save data")
         }
            }
     }
@@ -82,22 +83,25 @@ class TaskManager {
         } catch {
             
             print("Failed to load . \(error)")
+            self.reportError(title: "Error", message: "Failed to load data")
+           
         }
            }
     }
     
+    func reportError(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        
+        }
+                alert.addAction(okAction)
+                let vc = ListsViewController()
+                vc.present(alert, animated: true, completion: nil)
     
-    func checkDate(){
-//        if Date() > tasksList.da! {
-//            if abs(diffComponents.day!) >= 1 {
-//                print("Pass your due date \n it passed with \(abs(diffComponents.day!)) Days ago")
-//            } else {
-//                print("Pass your due date \n it passed with \(abs(diffComponents.hour!)) Hours ago")
-//            }
-//        } else {
-//            print("Due in about \(diffComponents.day) \(diffComponents.hour)")
-//        }
     }
+    
+
     
     
 }
