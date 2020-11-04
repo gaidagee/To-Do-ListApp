@@ -12,13 +12,26 @@ class ListsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var TasksManagerList : TaskManager!
     var selectedTask: Tasks!
+    
+    @IBOutlet var addButtonView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(TasksManagerList.rr)
         self.tableView.reloadData()
+        
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.5176, green: 0.5725, blue: 0.549, alpha: 1.0)
+
+        view.backgroundColor = UIColor(red: 0.5176, green: 0.5725, blue: 0.549, alpha: 1.0)
+            //UIColor(red: 0.8078, green: 0.8353, blue: 0.8196, alpha: 1.0) /* #ced5d1 */
+        addButtonView.backgroundColor = UIColor(red: 0.9725, green: 0.9216, blue: 0.8902, alpha: 1.0)
         tableView.delegate = self
         tableView.dataSource = self
+    
+        tableView.backgroundColor = UIColor(red: 0.9725, green: 0.9216, blue: 0.8902, alpha: 1.0)
+            //UIColor(hue: 148/360, saturation: 2/100, brightness: 93/100, alpha: 1.0)
+        tableView.roundCorners(corners: [.topLeft , .topRight],raduis: 20)
 //         print("\reererere== \(TasksManagerList.tasksList)")
         if TasksManagerList.tasksList.isEmpty{
             print("\n\n -*******EMPTTYYY*********--- \n\n ")
@@ -33,11 +46,15 @@ class ListsViewController: UIViewController {
     
     /// This function is used to pass the data of the selected task to the TaskDetail VC case in editing mode.
     func showTaskDetail(on vc: TasksDetailsViewController){
+        
+        let hidden = selectedTask.completed == true ? false : true
         vc.isEditingMode = true
         
         vc.AddTaskViewUI.TitleField.textColor = .red
         vc.AddTaskViewUI.datePicker.isEnabled = false
         
+        vc.AddTaskViewUI.HeaderLabel.text = "Edit you task"
+        vc.AddTaskViewUI.checkImage.isHidden = hidden
         vc.AddTaskViewUI.TitleField.text = selectedTask.title
         vc.AddTaskViewUI.datePicker.date = selectedTask.dueDate
         vc.AddTaskViewUI.textView.text = selectedTask.Description
@@ -63,6 +80,8 @@ extension ListsViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.cellDelegate = self
         cell.index = indexPath.row
+        
+        cell.cellSideView.backgroundColor = cell.arrColors.randomElement()
         
         let buttonImage: UIImage = task.completed == true ? #imageLiteral(resourceName: "checked") : #imageLiteral(resourceName: "unchecked")
         cell.completeButton.setImage(buttonImage, for: .normal)
@@ -93,8 +112,13 @@ extension ListsViewController: UITableViewDelegate, UITableViewDataSource{
      func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
           let DeleteAction = makeDeleteContextualAction(forRowAt: indexPath)
+          DeleteAction.backgroundColor = UIColor(hue: 327/360, saturation: 48/100, brightness: 77/100, alpha: 1.0)
+
+
           return UISwipeActionsConfiguration(actions: [DeleteAction])
       }
+    
+   
 
       //MARK: - Delete Contextual Actions
          private func makeDeleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
