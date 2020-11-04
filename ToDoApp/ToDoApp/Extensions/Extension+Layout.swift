@@ -19,4 +19,12 @@ func setDimensions(height: CGFloat? = nil , width: CGFloat? = nil) {
     widthAnchor.constraint(equalToConstant: width).isActive = true
     }
 }
+    
+    func roundCorners(corners: UIRectCorner, raduis: Int = 8){
+        let maskPath1 = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: raduis, height: raduis))
+        
+        let maskLayer1 = CAShapeLayer()
+        maskLayer1.path = maskPath1.cgPath
+        layer.mask = maskLayer1
+    }
 }

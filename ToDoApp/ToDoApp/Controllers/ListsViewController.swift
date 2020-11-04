@@ -12,13 +12,23 @@ class ListsViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     var TasksManagerList : TaskManager!
     var selectedTask: Tasks!
+    
+    @IBOutlet var addButtonView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(TasksManagerList.rr)
         self.tableView.reloadData()
+        view.backgroundColor = UIColor(red: 0.5176, green: 0.5725, blue: 0.549, alpha: 1.0)
+            //UIColor(red: 0.8078, green: 0.8353, blue: 0.8196, alpha: 1.0) /* #ced5d1 */
+        addButtonView.backgroundColor = UIColor(red: 0.9725, green: 0.9216, blue: 0.8902, alpha: 1.0)
         tableView.delegate = self
         tableView.dataSource = self
+    
+        tableView.backgroundColor = UIColor(red: 0.9725, green: 0.9216, blue: 0.8902, alpha: 1.0)
+            //UIColor(hue: 148/360, saturation: 2/100, brightness: 93/100, alpha: 1.0)
+        tableView.roundCorners(corners: [.topLeft , .topRight],raduis: 20)
 //         print("\reererere== \(TasksManagerList.tasksList)")
         if TasksManagerList.tasksList.isEmpty{
             print("\n\n -*******EMPTTYYY*********--- \n\n ")
@@ -38,6 +48,7 @@ class ListsViewController: UIViewController {
         vc.AddTaskViewUI.TitleField.textColor = .red
         vc.AddTaskViewUI.datePicker.isEnabled = false
         
+        vc.AddTaskViewUI.HeaderLabel.text = "Edit you task"
         vc.AddTaskViewUI.TitleField.text = selectedTask.title
         vc.AddTaskViewUI.datePicker.date = selectedTask.dueDate
         vc.AddTaskViewUI.textView.text = selectedTask.Description
@@ -93,8 +104,13 @@ extension ListsViewController: UITableViewDelegate, UITableViewDataSource{
      func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 
           let DeleteAction = makeDeleteContextualAction(forRowAt: indexPath)
+          DeleteAction.backgroundColor = UIColor(hue: 327/360, saturation: 48/100, brightness: 77/100, alpha: 1.0)
+
+
           return UISwipeActionsConfiguration(actions: [DeleteAction])
       }
+    
+   
 
       //MARK: - Delete Contextual Actions
          private func makeDeleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {

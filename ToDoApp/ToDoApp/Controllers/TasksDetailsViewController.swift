@@ -10,15 +10,21 @@ import UIKit
 class TasksDetailsViewController: UIViewController {
 
     var isEditingMode = false
+    
     var TasksManagerList : TaskManager!
+    
     let AddTaskViewUI = AddTaskView()
+    
     var selectedTask: Tasks!
+    
     var task : Tasks!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.9569, green: 0.9333, blue: 0.9216, alpha: 1.0)
+        view.backgroundColor = UIColor(red: 0.9569, green: 0.9333, blue: 0.9216, alpha: 1.0) /* #f4eeeb */
+
         AddTaskViewUI.delegate = self
 
     }
@@ -51,6 +57,8 @@ extension TasksDetailsViewController :TasksDetaileDelegate{
         case true:
             
             selectedTask.title = AddTaskViewUI.TitleField.text!
+            selectedTask.Description = AddTaskViewUI.textView.text!
+           
             performSegue(withIdentifier: "showTasksList", sender: nil)
 
         }

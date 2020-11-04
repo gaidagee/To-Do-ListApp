@@ -22,6 +22,7 @@ class TaskManager {
     
  
     init() {
+        
         load()
         print("\n\n\n\n\n ^%^%^%^ \(tasksURL)")
 
@@ -52,28 +53,29 @@ class TaskManager {
     
     
     @objc func save() {
-        
+        let queue = OperationQueue()
+           queue.addOperation {
         let encoder = PropertyListEncoder()
         
-        #if DEBUG
-        encoder.outputFormat = .xml
-        #endif
-        
         do {
-            let data: Data = try encoder.encode(tasksList)
-            try data.write(to: tasksURL)
+            let data: Data = try encoder.encode(self.tasksList)
+            try data.write(to: self.tasksURL)
             print("Saved lists!")
         } catch {
             print("Failed to save lists. \(error)")
         }
+           }
     }
     
     func load() {
         
+        let queue = OperationQueue()
+           queue.addOperation {
+            
         let decoder = PropertyListDecoder()
         
         do {
-            let data: Data = try Data(contentsOf: tasksURL)
+            let data: Data = try Data(contentsOf: self.tasksURL)
             let toDoLitst: [Tasks] = try decoder.decode([Tasks].self, from: data)
             self.tasksList = toDoLitst
             print("Loaded list!!")
@@ -81,6 +83,7 @@ class TaskManager {
             
             print("Failed to load . \(error)")
         }
+           }
     }
     
     

@@ -39,7 +39,7 @@ class AddTaskView: UIView {
     let HeaderLabel: UILabel = {
         let label = UILabel()
         label.text = "Add New Task"
-        label.font = UIFont.boldSystemFont(ofSize: 40)
+        label.font = UIFont.monospacedSystemFont(ofSize: 40, weight: .regular)
        // label.backgroundColor = .cyan
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -62,7 +62,8 @@ class AddTaskView: UIView {
     let TitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Task Title"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.monospacedSystemFont(ofSize: 20, weight: .medium)
+            //UIFont.boldSystemFont(ofSize: 20)
        // label.backgroundColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setDimensions(height: 50, width: 350)
@@ -72,7 +73,8 @@ class AddTaskView: UIView {
     let DateLabel: UILabel = {
         let label = UILabel()
         label.text = "Due Date"
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.monospacedSystemFont(ofSize: 20, weight: .medium)
+            //UIFont.boldSystemFont(ofSize: 20)
         //label.backgroundColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
        label.setDimensions(height: 50, width: 350)
@@ -84,7 +86,8 @@ class AddTaskView: UIView {
     let TitleField: UITextField = {
         let field = UITextField()
         field.placeholder = "Set Task Title"
-        field.font = UIFont.boldSystemFont(ofSize: 15)
+        field.font = UIFont.monospacedSystemFont(ofSize: 19, weight: .light)
+            //UIFont.boldSystemFont(ofSize: 20)
        // field.backgroundColor = .yellow
         field.translatesAutoresizingMaskIntoConstraints = false
         field.setDimensions(height: 50, width: 350)
@@ -98,7 +101,8 @@ class AddTaskView: UIView {
     let ExtraNoteLabel: UILabel = {
         let label = UILabel()
         label.text = "Additional Notes "
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.monospacedSystemFont(ofSize: 20, weight: .medium)
+            //UIFont.boldSystemFont(ofSize: 20)
        // label.backgroundColor = .red
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setDimensions(height: 50, width: 350 )
@@ -114,7 +118,16 @@ class AddTaskView: UIView {
     
      var textView: UITextView = {
         let textview = UITextView()
-        textview.backgroundColor = .lightGray
+        textview.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        textview.backgroundColor = UIColor(hue: 148/360, saturation: 2/100, brightness: 93/100, alpha: 1.0) /* #e8edea */
+
+            
+            // light pink UIColor(hue: 343/360, saturation: 7/100, brightness: 100/100, alpha: 1.0) /* #ffedf2 */
+
+        textview.font = UIFont.monospacedSystemFont(ofSize: 19, weight: .light)
+            //UIFont.systemFont(ofSize: 20)
+        textview.textAlignment = .justified
+        textview.layer.cornerRadius = 20
         textview.setDimensions(width: 350)
         return textview
     }()
@@ -124,10 +137,25 @@ class AddTaskView: UIView {
         but.translatesAutoresizingMaskIntoConstraints = false
         but.setTitle("Done", for: .normal)
         but.setTitleColor(.black, for: .normal)
-        but.setDimensions(height: 80, width: 80)
-        but.layer.cornerRadius = 80 / 2
+       
+        but.setDimensions(height: 100, width: 100)
+        but.layer.cornerRadius = 100 / 2
         but.clipsToBounds = true
-        but.backgroundColor = .cyan
+        but.backgroundColor = UIColor(hue: 343/360, saturation: 7/100, brightness: 100/100, alpha: 1.0) /* #ffedf2 */
+            //UIColor(hue: 148/360, saturation: 7/100, brightness: 93/100, alpha: 1.0) /* #dcede4 */
+
+//        but.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        but.layer.shadowColor = UIColor.lightGray.cgColor
+//        but.layer.shadowOpacity = 1
+//        but.layer.shadowRadius = 5
+//        but.layer.masksToBounds = false
+//
+        but.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        but.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+        but.layer.shadowOpacity = 1.0
+        but.layer.shadowRadius = 0.0
+        but.layer.masksToBounds = false
+        
         but.addTarget(self, action: #selector(doneButtonClicked(_:)), for: .touchUpInside)
 
 
