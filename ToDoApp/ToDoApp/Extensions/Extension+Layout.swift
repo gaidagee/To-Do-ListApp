@@ -27,4 +27,18 @@ func setDimensions(height: CGFloat? = nil , width: CGFloat? = nil) {
         maskLayer1.path = maskPath1.cgPath
         layer.mask = maskLayer1
     }
+    
+    func allRoundedConrners(radius: CGFloat = 10){
+        self.layer.cornerRadius = radius
+    }
+    
+   
+}
+
+extension UIColor {
+    static var lightPink = UIColor(red: 0.9725, green: 0.9216, blue: 0.8902, alpha: 1.0)
+    static var peachyPink = UIColor(red: 0.9373, green: 0.6314, blue: 0.5529, alpha: 1.0) /* #efa18d */
+    static var offWhite = UIColor(red: 0.9686, green: 0.9647, blue: 0.9608, alpha: 1.0) /* #f7f6f5 */
+
+
 }

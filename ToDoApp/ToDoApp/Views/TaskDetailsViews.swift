@@ -29,6 +29,14 @@ class AddTaskView: UIView {
     }
     
     var pickedDate : Date = Date()
+    let checkImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "check")
+        image.isHidden = true
+        image.setDimensions(height: 120, width: 120)
+        return image
+    }()
+    
     let myView: UIView = {
         let view = UIView()
           view.backgroundColor = UIColor.red
@@ -41,6 +49,7 @@ class AddTaskView: UIView {
         label.text = "Add New Task"
         label.font = UIFont.monospacedSystemFont(ofSize: 40, weight: .regular)
        // label.backgroundColor = .cyan
+        label.textColor = .offWhite
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.setDimensions(height: 50, width: 350)
@@ -50,6 +59,8 @@ class AddTaskView: UIView {
     let stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
+        stack.backgroundColor = .lightPink
+        stack.allRoundedConrners(radius: 20)
        // stack.backgroundColor = .green
         stack.alignment = .fill
         stack.distribution = .fill
@@ -86,9 +97,12 @@ class AddTaskView: UIView {
     let TitleField: UITextField = {
         let field = UITextField()
         field.placeholder = "Set Task Title"
+        field.textAlignment = .center
         field.font = UIFont.monospacedSystemFont(ofSize: 19, weight: .light)
             //UIFont.boldSystemFont(ofSize: 20)
-       // field.backgroundColor = .yellow
+       // field.backgroundColor = .lightPink
+        
+        field.allRoundedConrners()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.setDimensions(height: 50, width: 350)
         return field
@@ -112,6 +126,8 @@ class AddTaskView: UIView {
     func setDatePicker(){
     datePicker.datePickerMode = .dateAndTime
     datePicker.center =  center
+    //datePicker.backgroundColor = .lightPink
+    datePicker.allRoundedConrners()
     datePicker.setDimensions(height: 50, width: 350)
     datePicker.addTarget(self, action: #selector(pickDate(_:)), for: .valueChanged)
     }
@@ -119,7 +135,7 @@ class AddTaskView: UIView {
      var textView: UITextView = {
         let textview = UITextView()
         textview.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-        textview.backgroundColor = UIColor(hue: 148/360, saturation: 2/100, brightness: 93/100, alpha: 1.0) /* #e8edea */
+        textview.backgroundColor = .offWhite
 
             
             // light pink UIColor(hue: 343/360, saturation: 7/100, brightness: 100/100, alpha: 1.0) /* #ffedf2 */
@@ -127,7 +143,7 @@ class AddTaskView: UIView {
         textview.font = UIFont.monospacedSystemFont(ofSize: 19, weight: .light)
             //UIFont.systemFont(ofSize: 20)
         textview.textAlignment = .justified
-        textview.layer.cornerRadius = 20
+        textview.allRoundedConrners()
         textview.setDimensions(width: 350)
         return textview
     }()
@@ -141,20 +157,21 @@ class AddTaskView: UIView {
         but.setDimensions(height: 100, width: 100)
         but.layer.cornerRadius = 100 / 2
         but.clipsToBounds = true
-        but.backgroundColor = UIColor(hue: 343/360, saturation: 7/100, brightness: 100/100, alpha: 1.0) /* #ffedf2 */
+        but.backgroundColor = .peachyPink
+            //UIColor(hue: 343/360, saturation: 7/100, brightness: 100/100, alpha: 1.0) /* #ffedf2 */
             //UIColor(hue: 148/360, saturation: 7/100, brightness: 93/100, alpha: 1.0) /* #dcede4 */
 
-//        but.layer.shadowOffset = CGSize(width: 0, height: 1)
-//        but.layer.shadowColor = UIColor.lightGray.cgColor
-//        but.layer.shadowOpacity = 1
-//        but.layer.shadowRadius = 5
-//        but.layer.masksToBounds = false
-//
-        but.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-        but.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-        but.layer.shadowOpacity = 1.0
-        but.layer.shadowRadius = 0.0
+        but.layer.shadowOffset = CGSize(width: 0, height: 1)
+        but.layer.shadowColor = UIColor.lightGray.cgColor
+        but.layer.shadowOpacity = 1
+        but.layer.shadowRadius = 5
         but.layer.masksToBounds = false
+
+//        but.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+//        but.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+//        but.layer.shadowOpacity = 1.0
+//        but.layer.shadowRadius = 0.0
+//        but.layer.masksToBounds = false
         
         but.addTarget(self, action: #selector(doneButtonClicked(_:)), for: .touchUpInside)
 
@@ -175,6 +192,7 @@ class AddTaskView: UIView {
         addSubview(stackView)
         addSubview(myView)
 //        myView.addSubview(doneButton)
+        insertSubview(checkImage, aboveSubview: stackView)
         addSubview(doneButton)
         addConstraints()
         setAdditionalStacks()
@@ -214,7 +232,11 @@ class AddTaskView: UIView {
             doneButton.centerXAnchor.constraint(equalTo: myView.centerXAnchor),
             doneButton.centerYAnchor.constraint(equalTo: myView.centerYAnchor)
                                         ])
-       
+        //MARK: - Add image  constraints
+        NSLayoutConstraint.activate([
+            checkImage.topAnchor.constraint(equalTo: HeaderLabel.bottomAnchor, constant: -10),
+            checkImage.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -3)
+                                        ])
         
     }
      

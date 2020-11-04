@@ -20,6 +20,9 @@ class ListsViewController: UIViewController {
         
         print(TasksManagerList.rr)
         self.tableView.reloadData()
+        
+        navigationController?.navigationBar.barTintColor = UIColor(red: 0.5176, green: 0.5725, blue: 0.549, alpha: 1.0)
+
         view.backgroundColor = UIColor(red: 0.5176, green: 0.5725, blue: 0.549, alpha: 1.0)
             //UIColor(red: 0.8078, green: 0.8353, blue: 0.8196, alpha: 1.0) /* #ced5d1 */
         addButtonView.backgroundColor = UIColor(red: 0.9725, green: 0.9216, blue: 0.8902, alpha: 1.0)
@@ -43,12 +46,15 @@ class ListsViewController: UIViewController {
     
     /// This function is used to pass the data of the selected task to the TaskDetail VC case in editing mode.
     func showTaskDetail(on vc: TasksDetailsViewController){
+        
+        let hidden = selectedTask.completed == true ? false : true
         vc.isEditingMode = true
         
         vc.AddTaskViewUI.TitleField.textColor = .red
         vc.AddTaskViewUI.datePicker.isEnabled = false
         
         vc.AddTaskViewUI.HeaderLabel.text = "Edit you task"
+        vc.AddTaskViewUI.checkImage.isHidden = hidden
         vc.AddTaskViewUI.TitleField.text = selectedTask.title
         vc.AddTaskViewUI.datePicker.date = selectedTask.dueDate
         vc.AddTaskViewUI.textView.text = selectedTask.Description
@@ -74,6 +80,8 @@ extension ListsViewController: UITableViewDelegate, UITableViewDataSource{
         
         cell.cellDelegate = self
         cell.index = indexPath.row
+        
+        cell.cellSideView.backgroundColor = cell.arrColors.randomElement()
         
         let buttonImage: UIImage = task.completed == true ? #imageLiteral(resourceName: "checked") : #imageLiteral(resourceName: "unchecked")
         cell.completeButton.setImage(buttonImage, for: .normal)

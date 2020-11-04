@@ -45,7 +45,7 @@ class TasksListTableViewCell: UITableViewCell {
         taskTitle.setFont()
         dueDateLabel.setFont()
         
-        cellSideView.backgroundColor = arrColors.randomElement()
+//        cellSideView.backgroundColor = arrColors.randomElement()
       
         dueDateLabel.font = UIFont.systemFont(ofSize: 15)
         
