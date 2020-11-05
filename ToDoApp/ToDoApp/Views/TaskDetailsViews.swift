@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+import Lottie
 
 class AddTaskView: UIView {
    
@@ -28,15 +28,16 @@ class AddTaskView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+   
     var pickedDate : Date = Date()
-    let checkImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "check")
-        image.isHidden = true
-        image.setDimensions(height: 120, width: 120)
-        return image
+    let animationCheckView: UIView = {
+        let view = UIView()
+        view.isHidden = true
+        view.setDimensions(height: 120, width: 120)
+        return view
     }()
+    
+   
     
     let myView: UIView = {
         let view = UIView()
@@ -193,7 +194,13 @@ class AddTaskView: UIView {
         addSubview(stackView)
         addSubview(myView)
 //        myView.addSubview(doneButton)
-        insertSubview(checkImage, aboveSubview: stackView)
+        insertSubview(animationCheckView, aboveSubview: stackView)
+        let animationView = AnimationView(name: "check-circle")
+        //animationView.frame = animationCheckView.bounds
+        animationView.setDimensions(height: 120, width: 120)
+        animationCheckView.addSubview(animationView)
+        animationView.play()
+
         addSubview(doneButton)
         addConstraints()
         setAdditionalStacks()
@@ -235,8 +242,8 @@ class AddTaskView: UIView {
                                         ])
         //MARK: - Add image  constraints
         NSLayoutConstraint.activate([
-            checkImage.topAnchor.constraint(equalTo: HeaderLabel.bottomAnchor, constant: -10),
-            checkImage.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -3)
+            animationCheckView.topAnchor.constraint(equalTo: HeaderLabel.bottomAnchor, constant: -10),
+            animationCheckView.trailingAnchor.constraint(equalTo: trailingAnchor,constant: -3)
                                         ])
         
     }
