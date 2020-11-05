@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let navController = window!.rootViewController as! UINavigationController
                 let vc = navController.topViewController as! SignIn
                 vc.TasksManagerList = taskStore
-//        navController.navigationBar.barTintColor = UIColor(red: 0.5176, green: 0.5725, blue: 0.549, alpha: 1.0)
+        navController.navigationBar.barTintColor = .darkGreen
 //        let vc = navController.topViewController as! ListsViewController
 //        vc.TasksManagerList = taskStore
     }

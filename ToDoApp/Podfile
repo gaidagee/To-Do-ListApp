@@ -8,4 +8,5 @@ target 'ToDoApp' do
   # Pods for ToDoApp
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
+
 end

@@ -7,7 +7,7 @@
 
 import UIKit
 import UserNotifications
-
+import Firebase
 
 class ListsViewController: UIViewController {
     
@@ -26,7 +26,7 @@ class ListsViewController: UIViewController {
     
     @IBOutlet var addButtonView: UIView!
     
-    @IBOutlet var buttonAnimationView: UIView!
+    @IBOutlet var searchBar: UISearchBar!
     
     
     var selectedTask: Tasks!
@@ -65,8 +65,13 @@ class ListsViewController: UIViewController {
         self.tableView.reloadData()
         tableView.delegate = self
         tableView.dataSource = self
+        searchBar.delegate = self
         tableView.backgroundColor = .lightPeach
         
+//        self.searchBar.isTranslucent = true
+//        searchBar.tintColor = .peachyPink
+//        searchBar.backgroundColor = .offWhite
+//        searchBar.barTintColor = .darkGreen
         view.backgroundColor = .darkGreen
         navigationController?.navigationBar.barTintColor = .darkGreen
         
@@ -109,6 +114,17 @@ class ListsViewController: UIViewController {
     
     
    
+    @IBAction func signOutTapped(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
+            let vc = storyboard!.instantiateViewController(withIdentifier: "home") 
+              
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
+        }catch{
+            print("Error while signing out!")
+        }
+    }
     
     
     //MARK: Helpers
@@ -306,7 +322,31 @@ extension ListsViewController {
       
     }
 }
+extension ListsViewController: UISearchBarDelegate{
+    //this function check if the user search input matches any of the shared materials
+func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    //let taskList = isFiltered ? filteredTasksList : TasksManagerList.tasksList
 
+    if searchText.isEmpty {
+        filteredTasksList = TasksManagerList.tasksList
+    } else {
+    filteredTasksList = TasksManagerList.tasksList.filter{$0.title.localizedCaseInsensitiveContains(searchText)}
+    }
+// true means show or display the filterd results on tableview
+    isFiltered = true
+    tableView.reloadData()
+    
+}
+
+// in case of cancel the search, the uitableview data retruns
+func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+isFiltered = false
+    searchBar.text = nil
+    searchBar.showsCancelButton = false
+    searchBar.endEditing(true)
+    tableView.reloadData()
+}
+}
 
 
 
