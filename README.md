@@ -1,4 +1,6 @@
-# To-Do-ListApp
+# To-Do-ListApp. 
+![Screenshot](appIcon.png)
+
 
 ## ToDoListApp 
   Is a simple app to handle all your to do tasks.
