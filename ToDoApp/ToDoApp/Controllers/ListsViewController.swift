@@ -7,7 +7,7 @@
 
 import UIKit
 import UserNotifications
-import Lottie
+
 
 class ListsViewController: UIViewController {
     
@@ -250,7 +250,7 @@ extension ListsViewController {
         vc.AddTaskViewUI.datePicker.isEnabled = false
         
         vc.AddTaskViewUI.HeaderLabel.text = "Edit you task"
-        vc.AddTaskViewUI.checkImage.isHidden = hidden
+        vc.AddTaskViewUI.animationCheckView.isHidden = hidden
         vc.AddTaskViewUI.TitleField.text = selectedTask.title
         vc.AddTaskViewUI.datePicker.date = selectedTask.dueDate
         vc.AddTaskViewUI.textView.text = selectedTask.Description
