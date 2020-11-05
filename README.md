@@ -13,5 +13,6 @@
   - Supports data presistance.
   
 ## Demo
-![](ToDoAppDemoy.gif)
+![Alt text](ToDoAppDemo.gif)
+
 
