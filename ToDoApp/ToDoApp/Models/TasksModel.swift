@@ -47,7 +47,6 @@ class Tasks: Equatable, Codable{
         let expirationDate = dateInterval
       
         if expirationDate <= now {
-           // let timeRemaining = Tasks.dateComponentFormatter.string(from: now, to: dateInterval)!
             let timeRemaining = Calendar.current.dateComponents([.day,.hour,.minute], from: now, to: dateInterval)
             let timeresult = check(date: timeRemaining, response: "Finished")
           
@@ -60,14 +59,7 @@ class Tasks: Equatable, Codable{
             return .notFinished(time: timeresult)
         }
 
-//        if dateInterval.date ?? Date() <= now {
-//            let timeRemaining = Tasks.dateComponentFormatter.string(from: now, to: dateInterval.date!)!
-//            return .isFinished(time: timeRemaining)
-//
-//            } else {
-//                let timeRemaining = Tasks.dateComponentFormatter.string(from: now, to: dateInterval.date ?? dueDate)!
-//                return .result(time: timeRemaining)
-//            }
+
         }
     
     func check(date: DateComponents, response: String) -> String{
