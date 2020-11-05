@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A7347191255425A600360976 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = A7347190255425A600360976 /* Lottie */; };
+		A7347195255425CC00360976 /* check-circle.json in Resources */ = {isa = PBXBuildFile; fileRef = A7347194255425CC00360976 /* check-circle.json */; };
 		A76341ED255168570082AD66 /* TasksListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A76341EC255168570082AD66 /* TasksListTableViewCell.swift */; };
 		A77724902550B46200B04798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A777248F2550B46200B04798 /* AppDelegate.swift */; };
 		A77724922550B46200B04798 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77724912550B46200B04798 /* SceneDelegate.swift */; };
@@ -23,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A7347194255425CC00360976 /* check-circle.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "check-circle.json"; sourceTree = "<group>"; };
 		A76341EC255168570082AD66 /* TasksListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksListTableViewCell.swift; sourceTree = "<group>"; };
 		A777248C2550B46200B04798 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A777248F2550B46200B04798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,12 +48,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7347191255425A600360976 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7347193255425BD00360976 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				A7347194255425CC00360976 /* check-circle.json */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
 		A77724832550B46200B04798 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +82,7 @@
 		A777248E2550B46200B04798 /* ToDoApp */ = {
 			isa = PBXGroup;
 			children = (
+				A7347193255425BD00360976 /* Animation */,
 				A77724B22550B5DB00B04798 /* Extensions */,
 				A77724A62550B4A000B04798 /* Controllers */,
 				A77724A52550B49C00B04798 /* Models */,
@@ -136,6 +149,9 @@
 			dependencies = (
 			);
 			name = ToDoApp;
+			packageProductDependencies = (
+				A7347190255425A600360976 /* Lottie */,
+			);
 			productName = ToDoApp;
 			productReference = A777248C2550B46200B04798 /* ToDoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +179,9 @@
 				Base,
 			);
 			mainGroup = A77724832550B46200B04798;
+			packageReferences = (
+				A734718F255425A600360976 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = A777248D2550B46200B04798 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -179,6 +198,7 @@
 			files = (
 				A79089DB2550B68400B6C212 /* Main.storyboard in Resources */,
 				A777249C2550B46500B04798 /* LaunchScreen.storyboard in Resources */,
+				A7347195255425CC00360976 /* check-circle.json in Resources */,
 				A77724992550B46500B04798 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +413,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A734718F255425A600360976 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A7347190255425A600360976 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A734718F255425A600360976 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A77724842550B46200B04798 /* Project object */;
 }

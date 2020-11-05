@@ -21,6 +21,10 @@ class TasksListTableViewCell: UITableViewCell {
     @IBOutlet var completeButton: UIButton!
     
     @IBOutlet var cellSideView: UIView!
+    
+    @IBOutlet var buttonAnimationView: UIView!
+    
+    
     var cellDelegate: TasksCellDelegate!
     
     var index: Int?
