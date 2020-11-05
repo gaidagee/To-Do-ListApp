@@ -12,3 +12,6 @@
   - Notify user to remind them if task's due date is near.
   - Supports data presistance.
   
+## Demo
+![](ToDoAppDemoy.gif)
+
