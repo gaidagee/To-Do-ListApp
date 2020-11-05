@@ -11,13 +11,10 @@ protocol TasksCellDelegate {
     func updateTask(index: Int)
 }
 class TasksListTableViewCell: UITableViewCell {
-    let arrColors: [UIColor] = [
-         UIColor(hue: 15/360, saturation: 39/100, brightness: 56/100, alpha: 1.0) /* #916758 */
-        , UIColor(hue: 9/360, saturation: 22/100, brightness: 86/100, alpha: 1.0) /* #ddb4ac */
-        , UIColor(hue: 180/360, saturation: 42/100, brightness: 78/100, alpha: 1.0) /* #74c8c8 */
-        , UIColor(hue: 75/360, saturation: 3/100, brightness: 95/100, alpha: 1.0), /* #f2f4ec */
-         UIColor(hue: 359/360, saturation: 0/100, brightness: 100/100, alpha: 1.0) /* #ffffff */
-    ] // Use your color hex
+    
+    let themeColors: [UIColor] = [
+        #colorLiteral(red: 0.568627451, green: 0.4039215686, blue: 0.3450980392, alpha: 1),#colorLiteral(red: 0.8666666667, green: 0.7058823529, blue: 0.6745098039, alpha: 1), #colorLiteral(red: 0.4549019608, green: 0.7843137255, blue: 0.7843137255, alpha: 1), #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+    ]
 
     @IBOutlet var taskTitle: UILabel!
     @IBOutlet var dueDateLabel: UILabel!
@@ -31,9 +28,11 @@ class TasksListTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //set the values for top,left,bottom,right margins
-        let margins = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        
+        let margins = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
         contentView.frame = contentView.frame.inset(by: margins)
+        
+        
     }
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -41,15 +40,16 @@ class TasksListTableViewCell: UITableViewCell {
     }
 
     private func customizeUI(){
-        
+       
         taskTitle.setFont()
         dueDateLabel.setFont()
-        
-//        cellSideView.backgroundColor = arrColors.randomElement()
-      
         dueDateLabel.font = UIFont.systemFont(ofSize: 15)
         
-        self.backgroundColor = UIColor(red: 0.9725, green: 0.9216, blue: 0.8902, alpha: 1.0)
+        self.cellSideView.backgroundColor = themeColors.randomElement()
+        self.backgroundColor = .lightPeach
+//        cell.cellSideView.backgroundColor = cell.arrColors.randomElement()
+      
+      
     }
 
     @IBAction func CompleteButtonClicked(_ sender: Any) {

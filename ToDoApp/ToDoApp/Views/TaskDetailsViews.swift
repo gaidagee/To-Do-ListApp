@@ -11,6 +11,7 @@ import UIKit
 
 class AddTaskView: UIView {
    
+
     
     weak var delegate:TasksDetaileDelegate?
 
