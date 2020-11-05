@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import UserNotifications
+import Lottie
 
 class ListsViewController: UIViewController {
     
@@ -24,6 +26,7 @@ class ListsViewController: UIViewController {
     
     @IBOutlet var addButtonView: UIView!
     
+    @IBOutlet var buttonAnimationView: UIView!
     
     
     var selectedTask: Tasks!
@@ -31,8 +34,9 @@ class ListsViewController: UIViewController {
 
     var filteredTasksList = [Tasks]()
     var AlpfilteredTasksList = [Tasks]()
-    private var isFiltered = false
     
+    private var isFiltered = false
+    private var isGranted = false
     var selectedType: sortType!
 
     enum sortType {
@@ -45,7 +49,9 @@ class ListsViewController: UIViewController {
     override func viewDidLoad() {
 
         super.viewDidLoad()
+        scheduleLocal()
         configureUI()
+   
     }
     
     
@@ -175,7 +181,8 @@ extension ListsViewController: UITableViewDelegate, UITableViewDataSource{
     private func makeDeleteContextualAction(forRowAt indexPath: IndexPath) -> UIContextualAction {
         
         return UIContextualAction(style: .destructive, title: "Delete") { (action, swipeButtonView, completion) in
-            let deletedTask = self.TasksManagerList.tasksList[indexPath.row]
+            let taskList = self.isFiltered ? self.filteredTasksList : self.TasksManagerList.tasksList
+            let deletedTask = taskList[indexPath.row]
             self.TasksManagerList.deleteTask(deletedTask)
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
             completion(true)
@@ -250,6 +257,53 @@ extension ListsViewController {
         
         vc.selectedTask = selectedTask
         vc.TasksManagerList = TasksManagerList
+    }
+}
+
+extension ListsViewController {
+  
+     func scheduleLocal() {
+        let nc = UNUserNotificationCenter.current()
+        nc.requestAuthorization(options: [.alert, .badge, .sound]) {
+            (granted , error) in
+            
+            if granted {
+                self.isGranted = true
+                print("Yes Granted")
+            } else {
+                self.isGranted = false
+                print("NO Not granted")
+            }
+        }
+                
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Dont Forget your task !"
+        content.body = " You task is close to its due date"
+        content.categoryIdentifier = "alarm"
+        content.sound = UNNotificationSound.default
+        
+        DispatchQueue.global(qos: .background).async {
+            
+            for task in self.TasksManagerList.tasksList {
+                
+            content.body = " You task \(task.title) is close to its due date"
+            let taskDate = task.dueDate - 60
+            print("Task Date \(taskDate)")
+            let components =  Calendar.current.dateComponents([.day, .hour, .minute], from: taskDate)
+            print("components \(components)")
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+            let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+                nc.add(request)
+            
+        }
+        }
+       
+        
+    }
+    
+     func registerLocal() {
+      
     }
 }
 

@@ -131,17 +131,26 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-U5-tIn">
-                                                            <rect key="frame" x="314" y="35" width="40" height="40"/>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z59-Qs-cON">
+                                                            <rect key="frame" x="334" y="24" width="40" height="40"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dg-U5-tIn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                    <state key="normal" image="unchecked"/>
+                                                                    <connections>
+                                                                        <action selector="CompleteButtonClicked:" destination="ihz-0i-CPc" eventType="touchUpInside" id="38N-Q7-Dci"/>
+                                                                    </connections>
+                                                                </button>
+                                                            </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="40" id="5Xk-iV-FvS"/>
-                                                                <constraint firstAttribute="width" constant="40" id="E2c-Jg-JHH"/>
+                                                                <constraint firstAttribute="trailing" secondItem="7dg-U5-tIn" secondAttribute="trailing" id="Pei-Rg-dhO"/>
+                                                                <constraint firstAttribute="height" constant="40" id="S5p-gr-eFd"/>
+                                                                <constraint firstItem="7dg-U5-tIn" firstAttribute="top" secondItem="z59-Qs-cON" secondAttribute="top" id="cz4-se-sSm"/>
+                                                                <constraint firstItem="7dg-U5-tIn" firstAttribute="leading" secondItem="z59-Qs-cON" secondAttribute="leading" id="f75-0Q-x5Z"/>
+                                                                <constraint firstAttribute="bottom" secondItem="7dg-U5-tIn" secondAttribute="bottom" id="rlT-Mr-iLD"/>
+                                                                <constraint firstAttribute="width" constant="40" id="vkp-lc-86j"/>
                                                             </constraints>
-                                                            <state key="normal" image="unchecked"/>
-                                                            <connections>
-                                                                <action selector="CompleteButtonClicked:" destination="ihz-0i-CPc" eventType="touchUpInside" id="38N-Q7-Dci"/>
-                                                            </connections>
-                                                        </button>
+                                                        </view>
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B0g-vN-SU7" userLabel="randomcoloredView">
                                                             <rect key="frame" x="0.0" y="-21" width="12" height="121"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -150,15 +159,16 @@
                                                     </subviews>
                                                     <constraints>
                                                         <constraint firstItem="uwZ-IG-ddR" firstAttribute="top" secondItem="pH4-sW-5uu" secondAttribute="topMargin" constant="8" id="1jb-Vm-Jdf"/>
+                                                        <constraint firstAttribute="trailing" secondItem="z59-Qs-cON" secondAttribute="trailing" constant="20" id="IiI-JV-RIb"/>
                                                         <constraint firstItem="8Vx-DX-NQ1" firstAttribute="leading" secondItem="pH4-sW-5uu" secondAttribute="leadingMargin" constant="11" id="Ncv-W7-Cbx"/>
                                                         <constraint firstItem="8Vx-DX-NQ1" firstAttribute="top" secondItem="uwZ-IG-ddR" secondAttribute="bottom" constant="5" id="P6c-r3-GqH"/>
-                                                        <constraint firstItem="7dg-U5-tIn" firstAttribute="trailing" secondItem="pH4-sW-5uu" secondAttribute="trailingMargin" constant="-20" id="drE-qZ-jKy"/>
+                                                        <constraint firstItem="z59-Qs-cON" firstAttribute="top" secondItem="pH4-sW-5uu" secondAttribute="top" constant="24" id="cpK-zK-diR"/>
                                                         <constraint firstItem="uwZ-IG-ddR" firstAttribute="leading" secondItem="pH4-sW-5uu" secondAttribute="leadingMargin" constant="11" id="pKw-9D-Ds2"/>
                                                         <constraint firstAttribute="bottomMargin" secondItem="8Vx-DX-NQ1" secondAttribute="bottom" constant="9" id="sS0-w4-5Ei"/>
-                                                        <constraint firstItem="7dg-U5-tIn" firstAttribute="top" secondItem="pH4-sW-5uu" secondAttribute="topMargin" constant="24" id="uK0-mM-bt3"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="buttonAnimationView" destination="z59-Qs-cON" id="Hg8-3X-DE8"/>
                                                     <outlet property="cellSideView" destination="B0g-vN-SU7" id="0MU-nV-XbP"/>
                                                     <outlet property="completeButton" destination="7dg-U5-tIn" id="0Rd-oO-xSz"/>
                                                     <outlet property="dueDateLabel" destination="8Vx-DX-NQ1" id="z3D-yx-LpM"/>
@@ -280,6 +290,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="rAY-dc-8fW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
