@@ -67,11 +67,7 @@ class ListsViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         tableView.backgroundColor = .lightPeach
-        
-//        self.searchBar.isTranslucent = true
-//        searchBar.tintColor = .peachyPink
-//        searchBar.backgroundColor = .offWhite
-//        searchBar.barTintColor = .darkGreen
+ 
         view.backgroundColor = .darkGreen
         navigationController?.navigationBar.barTintColor = .darkGreen
         
@@ -103,7 +99,6 @@ class ListsViewController: UIViewController {
                 $0.dueDate < $1.dueDate}
         case 2:
             
-                        // do something
             filteredTasksList = TasksManagerList.tasksList
         default:
             print("error in segmented control")
@@ -262,7 +257,7 @@ extension ListsViewController {
         let hidden = selectedTask.completed == true ? false : true
         vc.isEditingMode = true
         
-        vc.AddTaskViewUI.TitleField.textColor = .red
+        vc.AddTaskViewUI.TitleField.textColor = .darkPeach
         vc.AddTaskViewUI.datePicker.isEnabled = false
         
         vc.AddTaskViewUI.HeaderLabel.text = "Edit you task"

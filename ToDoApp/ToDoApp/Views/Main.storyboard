@@ -94,8 +94,13 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTW-1x-ssX" userLabel="bg">
+                                <rect key="frame" x="30" y="465" width="354" height="317"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.92156862750000001" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ig7-nn-x6E">
-                                <rect key="frame" x="87" y="234" width="240" height="125.5"/>
+                                <rect key="frame" x="84" y="133" width="240" height="125.5"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XYk-66-QC3" userLabel="LoginStack">
                                 <rect key="frame" x="57" y="558" width="300" height="164"/>
@@ -131,7 +136,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hjk-P8-7nF">
                                                 <rect key="frame" x="105.5" y="0.0" width="194.5" height="47"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -174,14 +179,22 @@
                             </label>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="UtQ-TU-It8">
                                 <rect key="frame" x="139" y="490" width="131" height="32"/>
+                                <color key="backgroundColor" red="0.97254901959999995" green="0.92156862750000001" blue="0.85867936639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
                                     <segment title="Login"/>
                                     <segment title="Sign up"/>
                                 </segments>
+                                <color key="selectedSegmentTintColor" red="0.97254901959999995" green="0.92156862750000001" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="registrationType:" destination="vK3-xp-MzO" eventType="valueChanged" id="FZH-sy-2J3"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MyToDo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OKY-u7-n7Y">
+                                <rect key="frame" x="80" y="273" width="248" height="65"/>
+                                <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="58"/>
+                                <color key="textColor" red="0.97254901959999995" green="0.92156862750000001" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0WH-gE-11L" userLabel="SignUpStack">
                                 <rect key="frame" x="57" y="571" width="300" height="138"/>
                                 <subviews>
@@ -216,7 +229,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MMz-pK-ioU">
                                                 <rect key="frame" x="105.5" y="0.0" width="194.5" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -253,23 +266,26 @@
                         <viewLayoutGuide key="safeArea" id="L77-yK-GN2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="L77-yK-GN2" firstAttribute="trailing" secondItem="OKY-u7-n7Y" secondAttribute="trailing" constant="86" id="33f-y2-g8M"/>
                             <constraint firstItem="L77-yK-GN2" firstAttribute="trailing" secondItem="UtQ-TU-It8" secondAttribute="trailing" constant="144" id="43J-Pu-f2T"/>
                             <constraint firstItem="0WH-gE-11L" firstAttribute="width" secondItem="XYk-66-QC3" secondAttribute="width" id="5ew-9w-JJb"/>
                             <constraint firstItem="0WH-gE-11L" firstAttribute="trailing" secondItem="XYk-66-QC3" secondAttribute="trailing" id="BhC-v3-uY3"/>
                             <constraint firstItem="L77-yK-GN2" firstAttribute="trailing" secondItem="GBY-FK-nzJ" secondAttribute="trailing" constant="110" id="BnZ-u7-Ib4"/>
                             <constraint firstItem="XYk-66-QC3" firstAttribute="top" secondItem="UtQ-TU-It8" secondAttribute="bottom" constant="37" id="CDT-vx-Tq5"/>
-                            <constraint firstItem="Ig7-nn-x6E" firstAttribute="top" secondItem="L77-yK-GN2" secondAttribute="top" constant="146" id="FHe-Dd-y6A"/>
                             <constraint firstItem="XYk-66-QC3" firstAttribute="leading" secondItem="L77-yK-GN2" secondAttribute="leading" constant="57" id="Fl1-fo-nk1"/>
                             <constraint firstItem="L77-yK-GN2" firstAttribute="trailing" secondItem="XYk-66-QC3" secondAttribute="trailing" constant="57" id="Fnc-MK-nin"/>
-                            <constraint firstItem="L77-yK-GN2" firstAttribute="trailing" secondItem="Ig7-nn-x6E" secondAttribute="trailing" constant="87" id="GEL-bR-Unp"/>
+                            <constraint firstItem="OKY-u7-n7Y" firstAttribute="leading" secondItem="L77-yK-GN2" secondAttribute="leading" constant="80" id="J4j-rB-dwd"/>
                             <constraint firstItem="0WH-gE-11L" firstAttribute="leading" secondItem="XYk-66-QC3" secondAttribute="leading" id="Kil-bQ-dUS"/>
-                            <constraint firstItem="GBY-FK-nzJ" firstAttribute="top" secondItem="Ig7-nn-x6E" secondAttribute="bottom" constant="10" id="VDY-op-FAH"/>
                             <constraint firstItem="0WH-gE-11L" firstAttribute="centerX" secondItem="XYk-66-QC3" secondAttribute="centerX" id="W8G-J6-FAx"/>
+                            <constraint firstItem="GBY-FK-nzJ" firstAttribute="top" secondItem="OKY-u7-n7Y" secondAttribute="bottom" constant="31.5" id="WY0-Lk-6jx"/>
+                            <constraint firstItem="Ig7-nn-x6E" firstAttribute="top" secondItem="L77-yK-GN2" secondAttribute="top" constant="45" id="ZWb-Hg-qZH"/>
+                            <constraint firstItem="Ig7-nn-x6E" firstAttribute="leading" secondItem="L77-yK-GN2" secondAttribute="leading" constant="84" id="a2E-ze-ngf"/>
                             <constraint firstItem="L77-yK-GN2" firstAttribute="bottom" secondItem="XYk-66-QC3" secondAttribute="bottom" constant="140" id="esd-W0-bG8"/>
+                            <constraint firstItem="OKY-u7-n7Y" firstAttribute="top" secondItem="Ig7-nn-x6E" secondAttribute="bottom" constant="14.5" id="g25-iM-EAo"/>
+                            <constraint firstItem="L77-yK-GN2" firstAttribute="trailing" secondItem="Ig7-nn-x6E" secondAttribute="trailing" constant="90" id="h3m-3i-fmR"/>
                             <constraint firstItem="UtQ-TU-It8" firstAttribute="leading" secondItem="L77-yK-GN2" secondAttribute="leading" constant="139" id="j2N-NR-7SP"/>
                             <constraint firstItem="0WH-gE-11L" firstAttribute="height" secondItem="XYk-66-QC3" secondAttribute="height" multiplier="0.841463" id="qB9-KH-mWR"/>
                             <constraint firstItem="GBY-FK-nzJ" firstAttribute="leading" secondItem="L77-yK-GN2" secondAttribute="leading" constant="154" id="uh5-18-TwC"/>
-                            <constraint firstItem="Ig7-nn-x6E" firstAttribute="leading" secondItem="L77-yK-GN2" secondAttribute="leading" constant="87" id="vQo-jv-Pdh"/>
                             <constraint firstItem="UtQ-TU-It8" firstAttribute="top" secondItem="GBY-FK-nzJ" secondAttribute="bottom" constant="88" id="z2z-hA-nl6"/>
                             <constraint firstItem="0WH-gE-11L" firstAttribute="centerY" secondItem="XYk-66-QC3" secondAttribute="centerY" id="zxJ-Vr-lsg"/>
                         </constraints>
@@ -277,6 +293,7 @@
                     <navigationItem key="navigationItem" id="Hnz-Se-ozA"/>
                     <connections>
                         <outlet property="animationView" destination="Ig7-nn-x6E" id="p8x-fg-bNc"/>
+                        <outlet property="backGround" destination="OTW-1x-ssX" id="eOD-MX-3JW"/>
                         <outlet property="emailTextField" destination="ICB-u6-zZU" id="uWw-ki-ZYi"/>
                         <outlet property="headerLabel" destination="nnc-ed-Pdt" id="TGg-LF-hKZ"/>
                         <outlet property="loginStack" destination="XYk-66-QC3" id="hNt-t9-IgZ"/>

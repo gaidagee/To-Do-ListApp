@@ -13,6 +13,7 @@ class SignIn: UIViewController {
     var TasksManagerList : TaskManager!
 
     
+    @IBOutlet var backGround: UIView!
     @IBOutlet var headerLabel: UILabel!
     
     @IBOutlet var signUpStack: UIStackView!
@@ -39,7 +40,6 @@ class SignIn: UIViewController {
         super.viewDidLoad()
         ConfigureUI()
         setAnimationIcone()
-        // Do any additional setup after loading the view.
     }
     
     
@@ -87,24 +87,7 @@ class SignIn: UIViewController {
         }
     }
     
-    //MARK: - Helpers
-    
-    private func validateFields(field: UITextField, field2: UITextField) -> Bool{
-       var valid = false
-        if let emailField = field.text,
-           let passField = field2.text {
-            
-            if emailField.trimmingCharacters(in: .whitespaces) == "" || passField.trimmingCharacters(in: .whitespaces) == "" {
-                reportError(title: "Error", message: "Email and Password field must not be empty")
-                valid = false
-            }
-            else {
-                valid = true
-            }
-        }
-        return valid
-    }
-    
+   
     private func signIn() {
         let email = emailTextField.text!.trimmingCharacters(in: .whitespaces)
         let password = passwordTextField.text!.trimmingCharacters(in: .whitespaces)
@@ -150,6 +133,25 @@ class SignIn: UIViewController {
         }
         
     }
+    
+    //MARK: - Helpers
+    
+    private func validateFields(field: UITextField, field2: UITextField) -> Bool{
+       var valid = false
+        if let emailField = field.text,
+           let passField = field2.text {
+            
+            if emailField.trimmingCharacters(in: .whitespaces) == "" || passField.trimmingCharacters(in: .whitespaces) == "" {
+                reportError(title: "Error", message: "Email and Password field must not be empty")
+                valid = false
+            }
+            else {
+                valid = true
+            }
+        }
+        return valid
+    }
+    
     func reportError(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
@@ -185,6 +187,7 @@ extension SignIn {
         signUpTapped.allRoundedConrners(radius: 10)
         signUpTapped.backgroundColor = .peachyPink
         
+        backGround.allRoundedConrners()
         
     }
     
