@@ -49,5 +49,6 @@ extension UIColor {
     static let lightPeach = #colorLiteral(red: 0.9725490196, green: 0.9215686275, blue: 0.8901960784, alpha: 1)
     static let errorRed =   #colorLiteral(red: 0.8274509804, green: 0.4745098039, blue: 0.431372549, alpha: 1)
     static let darkGreen =  #colorLiteral(red: 0.5176470588, green: 0.6078431373, blue: 0.5490196078, alpha: 1)
+    static let darkPeach = #colorLiteral(red: 0.8862745098, green: 0.5607843137, blue: 0.4352941176, alpha: 1)
 
 }

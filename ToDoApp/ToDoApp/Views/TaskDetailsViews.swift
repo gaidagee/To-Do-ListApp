@@ -61,7 +61,7 @@ class AddTaskView: UIView {
     let stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.backgroundColor = .lightPink
+        stack.backgroundColor = .lightPeach
         stack.allRoundedConrners(radius: 20)
         stack.alignment = .fill
         stack.distribution = .fill
@@ -97,8 +97,11 @@ class AddTaskView: UIView {
         let field = UITextField()
         field.placeholder = "Set Task Title"
         field.textAlignment = .center
-        field.font = UIFont.monospacedSystemFont(ofSize: 19, weight: .light)
+        field.font = UIFont.monospacedSystemFont(ofSize: 19, weight: .bold)
+      
+        
         field.allRoundedConrners()
+        field.textColor = .darkPeach
         field.translatesAutoresizingMaskIntoConstraints = false
         field.setDimensions(height: 50, width: 350)
         return field
@@ -132,6 +135,7 @@ class AddTaskView: UIView {
         textview.backgroundColor = .offWhite
         textview.font = UIFont.monospacedSystemFont(ofSize: 19, weight: .light)
         textview.textAlignment = .justified
+        textview.textColor = .darkPeach
         textview.allRoundedConrners()
         textview.setDimensions(width: 350)
         return textview

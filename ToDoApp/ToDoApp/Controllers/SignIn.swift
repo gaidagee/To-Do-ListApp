@@ -13,6 +13,7 @@ class SignIn: UIViewController {
     var TasksManagerList : TaskManager!
 
     
+    @IBOutlet var backGround: UIView!
     @IBOutlet var headerLabel: UILabel!
     
     @IBOutlet var signUpStack: UIStackView!
@@ -186,6 +187,7 @@ extension SignIn {
         signUpTapped.allRoundedConrners(radius: 10)
         signUpTapped.backgroundColor = .peachyPink
         
+        backGround.allRoundedConrners()
         
     }
     

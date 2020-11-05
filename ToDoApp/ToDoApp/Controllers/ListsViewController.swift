@@ -257,7 +257,7 @@ extension ListsViewController {
         let hidden = selectedTask.completed == true ? false : true
         vc.isEditingMode = true
         
-        vc.AddTaskViewUI.TitleField.textColor = .peachyPink
+        vc.AddTaskViewUI.TitleField.textColor = .darkPeach
         vc.AddTaskViewUI.datePicker.isEnabled = false
         
         vc.AddTaskViewUI.HeaderLabel.text = "Edit you task"
