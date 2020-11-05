@@ -23,7 +23,6 @@ class Tasks: Equatable, Codable{
     var completed : Bool = false
     var dueDate : Date = Date()
     var Description :String = ""
-    
     enum CountdownResponse {
         case isFinished(time:String)
         case notFinished(time: String)
@@ -51,7 +50,9 @@ class Tasks: Equatable, Codable{
            // let timeRemaining = Tasks.dateComponentFormatter.string(from: now, to: dateInterval)!
             let timeRemaining = Calendar.current.dateComponents([.day,.hour,.minute], from: now, to: dateInterval)
             let timeresult = check(date: timeRemaining, response: "Finished")
+          
             return .isFinished(time: timeresult)
+            
             //
         } else {
             let timeRemaining = Calendar.current.dateComponents([.day,.hour,.minute], from: now, to: dateInterval)

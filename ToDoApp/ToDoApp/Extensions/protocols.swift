@@ -15,3 +15,8 @@ protocol TasksDetaileDelegate: class {
                     date: Date,
                     desc: String)
 }
+
+
+protocol SortingDelegate {
+    func sortList(_ sender: [Tasks])
+}
