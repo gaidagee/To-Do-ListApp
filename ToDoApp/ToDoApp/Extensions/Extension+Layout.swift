@@ -52,3 +52,18 @@ extension UIColor {
     static let darkPeach = #colorLiteral(red: 0.8862745098, green: 0.5607843137, blue: 0.4352941176, alpha: 1)
 
 }
+
+extension UIViewController {
+    
+    func reportError(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        
+        }
+                alert.addAction(okAction)
+                //let vc = ListsViewController()
+                self.present(alert, animated: true, completion: nil)
+    
+    }
+}

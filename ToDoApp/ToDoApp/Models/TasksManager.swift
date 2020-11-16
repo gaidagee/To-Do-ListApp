@@ -55,18 +55,25 @@ class TaskManager {
     
     @objc func save() {
         let queue = OperationQueue()
-           queue.addOperation {
-        let encoder = PropertyListEncoder()
-        
-        do {
-            let data: Data = try encoder.encode(self.tasksList)
-            try data.write(to: self.tasksURL)
-            print("Saved lists!")
-        } catch {
-            print("Failed to save lists. \(error)")
-            self.reportError(title: "Error", message: "Failed to save data")
+        let saveOperation = SaveTasksOperation(taskURL: self.tasksURL, tasks: self.tasksList)
+        saveOperation.completionBlock = {
+            print("returned")
         }
-           }
+        queue.addOperation(saveOperation)
+        
+        
+//           queue.addOperation {
+//        let encoder = PropertyListEncoder()
+//
+//        do {
+//            let data: Data = try encoder.encode(self.tasksList)
+//            try data.write(to: self.tasksURL)
+//            print("Saved lists!")
+//        } catch {
+//            print("Failed to save lists. \(error)")
+//            self.reportError(title: "Error", message: "Failed to save data")
+//        }
+//           }
     }
     
     func load() {
